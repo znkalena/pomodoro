@@ -20,8 +20,7 @@ showTime(state.timeLeft);
 if(state.timeLeft>0&&state.isActive){
 state.timerId=setTimeout(startTimer,1000);
 }
-if(state.timeLeft <= 0){
-    alarm();
+if(state.timeLeft <= 0){    
     
     if(state.status==='work'){
         state.activTodo.pomodoro +=1;
@@ -33,6 +32,7 @@ if(state.timeLeft <= 0){
     }else{
         state.status='work';
     }
+    alarm();
     state.timeLeft=state[state.status] * 60;
     changeActivBtn(state.status);
     startTimer();
