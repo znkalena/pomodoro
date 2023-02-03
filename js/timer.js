@@ -23,7 +23,7 @@ state.timerId=setTimeout(startTimer,1000);
 if(state.timeLeft <= 0){    
     
     if(state.status==='work'){
-        state.activTodo.pomodoro +=1;
+        state.activTodo.pomodoro++;
         if(state.activTodo.pomodoro % state.count){
             state.status= 'break';
         }else{
