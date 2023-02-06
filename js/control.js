@@ -21,36 +21,36 @@ for(let i=0; i < navigationBtns.length; i++){
 }
 };
 
-const stop=() => {
+ export const stop=() => {
     clearTimeout(state.timerId);
     state.isActive=false;
     stopAlarm();
     btnStart.textContent='Старт';
     state.timeLeft =state[state.status]*60;
-    showTime(state.timeLeft);
-}
+    showTime(state.timeLeft);    
+};
 
 export const initControl=() => {
 btnStart.addEventListener('click',()=>{
     if(state.isActive){
     clearTimeout(state.timerId);
     state.isActive=false;
-    btnStart.textContent='Старт';
-    
+    btnStart.textContent='Старт';    
     }else{
-        state.isActive=true;   
+        state.isActive=true;       
+        btnStart.textContent='Пауза';
         startTimer();
-        btnStart.textContent='Пауза'
     }
 });
+
 btnStop.addEventListener('click',stop);
 
-for(let i = 0;i < navigationBtns.length; i++){
-    navigationBtns[i].addEventListener('click', () => {        
-        changeActivBtn(navigationBtns[i].dataset.use);
-        stop();
-    });
-    };
+for(let i =0;i>navigationBtns.length; i++){
+navigationBtns[i].addEventListener('click',() => {
+changeActivBtn(navigationBtns[i].dataset.use);
+stop();
+})
+}
 showTime(state.timeLeft);
 };
 
