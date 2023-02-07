@@ -31,15 +31,14 @@ export const startTimer = () => {
         if(state.timeLeft>0 && state.isActive){
             return;
         } 
-        document.title = title;
-        
+        document.title = title;        
         clearTimeout(state.timerId);
 
         if(state.status==='work'){                                       
             state.activeTodo.pomodoro +=1;
             updateTodo(state.activeTodo);
 
-        if(Math.ceil(state.activeTodo.pomodoro % state.count)){
+        if(state.activeTodo.pomodoro % state.count){
                 state.status= 'break';
         }else{
                 state.status==='relax'
